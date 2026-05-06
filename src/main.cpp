@@ -1,0 +1,51 @@
+#define GLFW_INCLUDE_NONE
+#include <GLFW/glfw3.h>
+#include <render/rendergl.h>
+#include <world/world.h>
+#include <glm/glm.hpp>
+#include <thread>
+
+int main(void)
+{
+    GLFWwindow* window;
+
+    /* Initialize the library */
+    if (!glfwInit())
+        return -1;
+
+    /* Create a windowed mode window and its OpenGL context */
+    window = glfwCreateWindow(640, 480, "Hello World", NULL, NULL);
+    if (!window)
+    {
+        glfwTerminate();
+        return -1;
+    }
+
+    /* Make the window's context current */
+    glfwMakeContextCurrent(window);
+    gladLoadGL();
+
+    world_load("./game/map.fmap");
+
+    render_Camera_change_transform(glm::mat4(1.0f, 0.0f, 0.0f, 0.0f,
+                                             0.0f, 1.0f, 0.0f, 0.0f,
+                                             0.0f, 0.0f, 1.0f, 10.0f,
+                                             0.0f, 0.0f, 0.0f, 1.0f));
+
+    render_Camera_change_perspective(glm::perspective(glm::radians(45.0f), 1.0f, 0.1f, 100.0f));
+
+    std::thread worldthread(world_init);
+    worldthread.detach();
+
+    /* Loop until the user closes the window */
+    while (!glfwWindowShouldClose(window))
+    {
+        render_tick(&window);
+
+        /* Poll for and process events */
+        glfwPollEvents();
+    }
+
+    glfwTerminate();
+    return 0;
+}

@@ -1,0 +1,7 @@
+{
+"textures":[
+"./game/textures/texture.ftex"
+],
+"vertexShader": "./game/shaders/vertex.txt",
+"fragmentShader": "./game/shaders/frag.txt"
+}
