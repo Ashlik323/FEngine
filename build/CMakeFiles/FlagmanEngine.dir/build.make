@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/alexz/FlagmanEngineV1_1
+CMAKE_SOURCE_DIR = /home/alexz/FEngine
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/alexz/FlagmanEngineV1_1/build
+CMAKE_BINARY_DIR = /home/alexz/FEngine/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/FlagmanEngine.dir/depend.make
@@ -73,88 +73,88 @@ CMakeFiles/FlagmanEngine.dir/codegen:
 .PHONY : CMakeFiles/FlagmanEngine.dir/codegen
 
 CMakeFiles/FlagmanEngine.dir/src/main.cpp.o: CMakeFiles/FlagmanEngine.dir/flags.make
-CMakeFiles/FlagmanEngine.dir/src/main.cpp.o: /home/alexz/FlagmanEngineV1_1/src/main.cpp
+CMakeFiles/FlagmanEngine.dir/src/main.cpp.o: /home/alexz/FEngine/src/main.cpp
 CMakeFiles/FlagmanEngine.dir/src/main.cpp.o: CMakeFiles/FlagmanEngine.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/alexz/FlagmanEngineV1_1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/FlagmanEngine.dir/src/main.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/FlagmanEngine.dir/src/main.cpp.o -MF CMakeFiles/FlagmanEngine.dir/src/main.cpp.o.d -o CMakeFiles/FlagmanEngine.dir/src/main.cpp.o -c /home/alexz/FlagmanEngineV1_1/src/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/alexz/FEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/FlagmanEngine.dir/src/main.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/FlagmanEngine.dir/src/main.cpp.o -MF CMakeFiles/FlagmanEngine.dir/src/main.cpp.o.d -o CMakeFiles/FlagmanEngine.dir/src/main.cpp.o -c /home/alexz/FEngine/src/main.cpp
 
 CMakeFiles/FlagmanEngine.dir/src/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/FlagmanEngine.dir/src/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/alexz/FlagmanEngineV1_1/src/main.cpp > CMakeFiles/FlagmanEngine.dir/src/main.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/alexz/FEngine/src/main.cpp > CMakeFiles/FlagmanEngine.dir/src/main.cpp.i
 
 CMakeFiles/FlagmanEngine.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/FlagmanEngine.dir/src/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/alexz/FlagmanEngineV1_1/src/main.cpp -o CMakeFiles/FlagmanEngine.dir/src/main.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/alexz/FEngine/src/main.cpp -o CMakeFiles/FlagmanEngine.dir/src/main.cpp.s
 
 CMakeFiles/FlagmanEngine.dir/src/render/rendergl.cpp.o: CMakeFiles/FlagmanEngine.dir/flags.make
-CMakeFiles/FlagmanEngine.dir/src/render/rendergl.cpp.o: /home/alexz/FlagmanEngineV1_1/src/render/rendergl.cpp
+CMakeFiles/FlagmanEngine.dir/src/render/rendergl.cpp.o: /home/alexz/FEngine/src/render/rendergl.cpp
 CMakeFiles/FlagmanEngine.dir/src/render/rendergl.cpp.o: CMakeFiles/FlagmanEngine.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/alexz/FlagmanEngineV1_1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/FlagmanEngine.dir/src/render/rendergl.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/FlagmanEngine.dir/src/render/rendergl.cpp.o -MF CMakeFiles/FlagmanEngine.dir/src/render/rendergl.cpp.o.d -o CMakeFiles/FlagmanEngine.dir/src/render/rendergl.cpp.o -c /home/alexz/FlagmanEngineV1_1/src/render/rendergl.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/alexz/FEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/FlagmanEngine.dir/src/render/rendergl.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/FlagmanEngine.dir/src/render/rendergl.cpp.o -MF CMakeFiles/FlagmanEngine.dir/src/render/rendergl.cpp.o.d -o CMakeFiles/FlagmanEngine.dir/src/render/rendergl.cpp.o -c /home/alexz/FEngine/src/render/rendergl.cpp
 
 CMakeFiles/FlagmanEngine.dir/src/render/rendergl.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/FlagmanEngine.dir/src/render/rendergl.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/alexz/FlagmanEngineV1_1/src/render/rendergl.cpp > CMakeFiles/FlagmanEngine.dir/src/render/rendergl.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/alexz/FEngine/src/render/rendergl.cpp > CMakeFiles/FlagmanEngine.dir/src/render/rendergl.cpp.i
 
 CMakeFiles/FlagmanEngine.dir/src/render/rendergl.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/FlagmanEngine.dir/src/render/rendergl.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/alexz/FlagmanEngineV1_1/src/render/rendergl.cpp -o CMakeFiles/FlagmanEngine.dir/src/render/rendergl.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/alexz/FEngine/src/render/rendergl.cpp -o CMakeFiles/FlagmanEngine.dir/src/render/rendergl.cpp.s
 
 CMakeFiles/FlagmanEngine.dir/src/utils/fileload.cpp.o: CMakeFiles/FlagmanEngine.dir/flags.make
-CMakeFiles/FlagmanEngine.dir/src/utils/fileload.cpp.o: /home/alexz/FlagmanEngineV1_1/src/utils/fileload.cpp
+CMakeFiles/FlagmanEngine.dir/src/utils/fileload.cpp.o: /home/alexz/FEngine/src/utils/fileload.cpp
 CMakeFiles/FlagmanEngine.dir/src/utils/fileload.cpp.o: CMakeFiles/FlagmanEngine.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/alexz/FlagmanEngineV1_1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/FlagmanEngine.dir/src/utils/fileload.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/FlagmanEngine.dir/src/utils/fileload.cpp.o -MF CMakeFiles/FlagmanEngine.dir/src/utils/fileload.cpp.o.d -o CMakeFiles/FlagmanEngine.dir/src/utils/fileload.cpp.o -c /home/alexz/FlagmanEngineV1_1/src/utils/fileload.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/alexz/FEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/FlagmanEngine.dir/src/utils/fileload.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/FlagmanEngine.dir/src/utils/fileload.cpp.o -MF CMakeFiles/FlagmanEngine.dir/src/utils/fileload.cpp.o.d -o CMakeFiles/FlagmanEngine.dir/src/utils/fileload.cpp.o -c /home/alexz/FEngine/src/utils/fileload.cpp
 
 CMakeFiles/FlagmanEngine.dir/src/utils/fileload.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/FlagmanEngine.dir/src/utils/fileload.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/alexz/FlagmanEngineV1_1/src/utils/fileload.cpp > CMakeFiles/FlagmanEngine.dir/src/utils/fileload.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/alexz/FEngine/src/utils/fileload.cpp > CMakeFiles/FlagmanEngine.dir/src/utils/fileload.cpp.i
 
 CMakeFiles/FlagmanEngine.dir/src/utils/fileload.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/FlagmanEngine.dir/src/utils/fileload.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/alexz/FlagmanEngineV1_1/src/utils/fileload.cpp -o CMakeFiles/FlagmanEngine.dir/src/utils/fileload.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/alexz/FEngine/src/utils/fileload.cpp -o CMakeFiles/FlagmanEngine.dir/src/utils/fileload.cpp.s
 
 CMakeFiles/FlagmanEngine.dir/src/world/classes/meshdynamic.cpp.o: CMakeFiles/FlagmanEngine.dir/flags.make
-CMakeFiles/FlagmanEngine.dir/src/world/classes/meshdynamic.cpp.o: /home/alexz/FlagmanEngineV1_1/src/world/classes/meshdynamic.cpp
+CMakeFiles/FlagmanEngine.dir/src/world/classes/meshdynamic.cpp.o: /home/alexz/FEngine/src/world/classes/meshdynamic.cpp
 CMakeFiles/FlagmanEngine.dir/src/world/classes/meshdynamic.cpp.o: CMakeFiles/FlagmanEngine.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/alexz/FlagmanEngineV1_1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/FlagmanEngine.dir/src/world/classes/meshdynamic.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/FlagmanEngine.dir/src/world/classes/meshdynamic.cpp.o -MF CMakeFiles/FlagmanEngine.dir/src/world/classes/meshdynamic.cpp.o.d -o CMakeFiles/FlagmanEngine.dir/src/world/classes/meshdynamic.cpp.o -c /home/alexz/FlagmanEngineV1_1/src/world/classes/meshdynamic.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/alexz/FEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/FlagmanEngine.dir/src/world/classes/meshdynamic.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/FlagmanEngine.dir/src/world/classes/meshdynamic.cpp.o -MF CMakeFiles/FlagmanEngine.dir/src/world/classes/meshdynamic.cpp.o.d -o CMakeFiles/FlagmanEngine.dir/src/world/classes/meshdynamic.cpp.o -c /home/alexz/FEngine/src/world/classes/meshdynamic.cpp
 
 CMakeFiles/FlagmanEngine.dir/src/world/classes/meshdynamic.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/FlagmanEngine.dir/src/world/classes/meshdynamic.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/alexz/FlagmanEngineV1_1/src/world/classes/meshdynamic.cpp > CMakeFiles/FlagmanEngine.dir/src/world/classes/meshdynamic.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/alexz/FEngine/src/world/classes/meshdynamic.cpp > CMakeFiles/FlagmanEngine.dir/src/world/classes/meshdynamic.cpp.i
 
 CMakeFiles/FlagmanEngine.dir/src/world/classes/meshdynamic.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/FlagmanEngine.dir/src/world/classes/meshdynamic.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/alexz/FlagmanEngineV1_1/src/world/classes/meshdynamic.cpp -o CMakeFiles/FlagmanEngine.dir/src/world/classes/meshdynamic.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/alexz/FEngine/src/world/classes/meshdynamic.cpp -o CMakeFiles/FlagmanEngine.dir/src/world/classes/meshdynamic.cpp.s
 
 CMakeFiles/FlagmanEngine.dir/src/world/world.cpp.o: CMakeFiles/FlagmanEngine.dir/flags.make
-CMakeFiles/FlagmanEngine.dir/src/world/world.cpp.o: /home/alexz/FlagmanEngineV1_1/src/world/world.cpp
+CMakeFiles/FlagmanEngine.dir/src/world/world.cpp.o: /home/alexz/FEngine/src/world/world.cpp
 CMakeFiles/FlagmanEngine.dir/src/world/world.cpp.o: CMakeFiles/FlagmanEngine.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/alexz/FlagmanEngineV1_1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/FlagmanEngine.dir/src/world/world.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/FlagmanEngine.dir/src/world/world.cpp.o -MF CMakeFiles/FlagmanEngine.dir/src/world/world.cpp.o.d -o CMakeFiles/FlagmanEngine.dir/src/world/world.cpp.o -c /home/alexz/FlagmanEngineV1_1/src/world/world.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/alexz/FEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/FlagmanEngine.dir/src/world/world.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/FlagmanEngine.dir/src/world/world.cpp.o -MF CMakeFiles/FlagmanEngine.dir/src/world/world.cpp.o.d -o CMakeFiles/FlagmanEngine.dir/src/world/world.cpp.o -c /home/alexz/FEngine/src/world/world.cpp
 
 CMakeFiles/FlagmanEngine.dir/src/world/world.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/FlagmanEngine.dir/src/world/world.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/alexz/FlagmanEngineV1_1/src/world/world.cpp > CMakeFiles/FlagmanEngine.dir/src/world/world.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/alexz/FEngine/src/world/world.cpp > CMakeFiles/FlagmanEngine.dir/src/world/world.cpp.i
 
 CMakeFiles/FlagmanEngine.dir/src/world/world.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/FlagmanEngine.dir/src/world/world.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/alexz/FlagmanEngineV1_1/src/world/world.cpp -o CMakeFiles/FlagmanEngine.dir/src/world/world.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/alexz/FEngine/src/world/world.cpp -o CMakeFiles/FlagmanEngine.dir/src/world/world.cpp.s
 
 CMakeFiles/FlagmanEngine.dir/includes/glad/src/glad.c.o: CMakeFiles/FlagmanEngine.dir/flags.make
-CMakeFiles/FlagmanEngine.dir/includes/glad/src/glad.c.o: /home/alexz/FlagmanEngineV1_1/includes/glad/src/glad.c
+CMakeFiles/FlagmanEngine.dir/includes/glad/src/glad.c.o: /home/alexz/FEngine/includes/glad/src/glad.c
 CMakeFiles/FlagmanEngine.dir/includes/glad/src/glad.c.o: CMakeFiles/FlagmanEngine.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/alexz/FlagmanEngineV1_1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/FlagmanEngine.dir/includes/glad/src/glad.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/FlagmanEngine.dir/includes/glad/src/glad.c.o -MF CMakeFiles/FlagmanEngine.dir/includes/glad/src/glad.c.o.d -o CMakeFiles/FlagmanEngine.dir/includes/glad/src/glad.c.o -c /home/alexz/FlagmanEngineV1_1/includes/glad/src/glad.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/alexz/FEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/FlagmanEngine.dir/includes/glad/src/glad.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/FlagmanEngine.dir/includes/glad/src/glad.c.o -MF CMakeFiles/FlagmanEngine.dir/includes/glad/src/glad.c.o.d -o CMakeFiles/FlagmanEngine.dir/includes/glad/src/glad.c.o -c /home/alexz/FEngine/includes/glad/src/glad.c
 
 CMakeFiles/FlagmanEngine.dir/includes/glad/src/glad.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/FlagmanEngine.dir/includes/glad/src/glad.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/alexz/FlagmanEngineV1_1/includes/glad/src/glad.c > CMakeFiles/FlagmanEngine.dir/includes/glad/src/glad.c.i
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/alexz/FEngine/includes/glad/src/glad.c > CMakeFiles/FlagmanEngine.dir/includes/glad/src/glad.c.i
 
 CMakeFiles/FlagmanEngine.dir/includes/glad/src/glad.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/FlagmanEngine.dir/includes/glad/src/glad.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/alexz/FlagmanEngineV1_1/includes/glad/src/glad.c -o CMakeFiles/FlagmanEngine.dir/includes/glad/src/glad.c.s
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/alexz/FEngine/includes/glad/src/glad.c -o CMakeFiles/FlagmanEngine.dir/includes/glad/src/glad.c.s
 
 # Object files for target FlagmanEngine
 FlagmanEngine_OBJECTS = \
@@ -180,7 +180,7 @@ FlagmanEngine: includes/glfw-3.4/src/libglfw3.a
 FlagmanEngine: /usr/lib/librt.a
 FlagmanEngine: /usr/lib/libm.so
 FlagmanEngine: CMakeFiles/FlagmanEngine.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/alexz/FlagmanEngineV1_1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable FlagmanEngine"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/home/alexz/FEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable FlagmanEngine"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/FlagmanEngine.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -192,6 +192,6 @@ CMakeFiles/FlagmanEngine.dir/clean:
 .PHONY : CMakeFiles/FlagmanEngine.dir/clean
 
 CMakeFiles/FlagmanEngine.dir/depend:
-	cd /home/alexz/FlagmanEngineV1_1/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/alexz/FlagmanEngineV1_1 /home/alexz/FlagmanEngineV1_1 /home/alexz/FlagmanEngineV1_1/build /home/alexz/FlagmanEngineV1_1/build /home/alexz/FlagmanEngineV1_1/build/CMakeFiles/FlagmanEngine.dir/DependInfo.cmake "--color=$(COLOR)" FlagmanEngine
+	cd /home/alexz/FEngine/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/alexz/FEngine /home/alexz/FEngine /home/alexz/FEngine/build /home/alexz/FEngine/build /home/alexz/FEngine/build/CMakeFiles/FlagmanEngine.dir/DependInfo.cmake "--color=$(COLOR)" FlagmanEngine
 .PHONY : CMakeFiles/FlagmanEngine.dir/depend
 

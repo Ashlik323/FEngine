@@ -179,9 +179,11 @@ void render_tick(GLFWwindow** window){
         glUseProgram(Curmesh.ShaderP->progid);
         glBindVertexArray(Curmesh.vao);
 
+        std::cout << Curmesh.vao << std::endl;
+
         GLuint TUPos = glGetUniformLocation(Curmesh.ShaderP->progid, "transform");
 
-        glm::mat4x4 mc = camperspective*camtransform*Curmesh.mtransform;
+        glm::mat4x4 mc = camperspective*camtransform;
 
         //mat4x4 mc = m4x4multiplybymat(camtransform, Curmesh.mtransform);
         //mc = m4x4transpose(mc);
@@ -192,7 +194,7 @@ void render_tick(GLFWwindow** window){
 
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, Curmesh.ebo);
         glDrawElements(GL_TRIANGLES, Curmesh.Icount, GL_UNSIGNED_INT, NULL);
-        std::cout << "Draw finished" << std::endl;
+        std::cout << "Draw finishedd" << std::endl;
         //another buffer should be binded so I think I should not unbind them as of now
         }
     }

@@ -4,10 +4,10 @@
             "classid": 1,
             "datatype": 0,
             "data": {
-                "meshfile": "./game/models/Cylinder.fmodel",
-                "materialfile": "./game/materials/material.fmat",
+                "meshfile": "./models/Cylinder.fmodel",
+                "materialfile": "./materials/material.fmat",
                 "transform": [
-                    1.0, 0.0, 0.0, 0.0,
+                    1.0, 0.0, 0.0, 10.0,
                     0.0, 1.0, 0.0, 0.0,
                     0.0, 0.0, 1.0, 0.0,
                     0.0, 0.0, 0.0, 1.0

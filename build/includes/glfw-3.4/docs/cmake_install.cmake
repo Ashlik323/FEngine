@@ -1,4 +1,4 @@
-# Install script for directory: /home/alexz/FlagmanEngineV1_1/includes/glfw-3.4/docs
+# Install script for directory: /home/alexz/FEngine/includes/glfw-3.4/docs
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,6 +45,6 @@ endif()
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
 if(CMAKE_INSTALL_LOCAL_ONLY)
-  file(WRITE "/home/alexz/FlagmanEngineV1_1/build/includes/glfw-3.4/docs/install_local_manifest.txt"
+  file(WRITE "/home/alexz/FEngine/build/includes/glfw-3.4/docs/install_local_manifest.txt"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()

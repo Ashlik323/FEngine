@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/alexz/FlagmanEngineV1_1
+CMAKE_SOURCE_DIR = /home/alexz/FEngine
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/alexz/FlagmanEngineV1_1/build
+CMAKE_BINARY_DIR = /home/alexz/FEngine/build
 
 # Utility rule file for uninstall.
 
@@ -67,7 +67,7 @@ include includes/glfw-3.4/CMakeFiles/uninstall.dir/compiler_depend.make
 include includes/glfw-3.4/CMakeFiles/uninstall.dir/progress.make
 
 includes/glfw-3.4/CMakeFiles/uninstall:
-	cd /home/alexz/FlagmanEngineV1_1/build/includes/glfw-3.4 && /usr/bin/cmake -P /home/alexz/FlagmanEngineV1_1/build/includes/glfw-3.4/cmake_uninstall.cmake
+	cd /home/alexz/FEngine/build/includes/glfw-3.4 && /usr/bin/cmake -P /home/alexz/FEngine/build/includes/glfw-3.4/cmake_uninstall.cmake
 
 includes/glfw-3.4/CMakeFiles/uninstall.dir/codegen:
 .PHONY : includes/glfw-3.4/CMakeFiles/uninstall.dir/codegen
@@ -81,10 +81,10 @@ includes/glfw-3.4/CMakeFiles/uninstall.dir/build: uninstall
 .PHONY : includes/glfw-3.4/CMakeFiles/uninstall.dir/build
 
 includes/glfw-3.4/CMakeFiles/uninstall.dir/clean:
-	cd /home/alexz/FlagmanEngineV1_1/build/includes/glfw-3.4 && $(CMAKE_COMMAND) -P CMakeFiles/uninstall.dir/cmake_clean.cmake
+	cd /home/alexz/FEngine/build/includes/glfw-3.4 && $(CMAKE_COMMAND) -P CMakeFiles/uninstall.dir/cmake_clean.cmake
 .PHONY : includes/glfw-3.4/CMakeFiles/uninstall.dir/clean
 
 includes/glfw-3.4/CMakeFiles/uninstall.dir/depend:
-	cd /home/alexz/FlagmanEngineV1_1/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/alexz/FlagmanEngineV1_1 /home/alexz/FlagmanEngineV1_1/includes/glfw-3.4 /home/alexz/FlagmanEngineV1_1/build /home/alexz/FlagmanEngineV1_1/build/includes/glfw-3.4 /home/alexz/FlagmanEngineV1_1/build/includes/glfw-3.4/CMakeFiles/uninstall.dir/DependInfo.cmake "--color=$(COLOR)" uninstall
+	cd /home/alexz/FEngine/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/alexz/FEngine /home/alexz/FEngine/includes/glfw-3.4 /home/alexz/FEngine/build /home/alexz/FEngine/build/includes/glfw-3.4 /home/alexz/FEngine/build/includes/glfw-3.4/CMakeFiles/uninstall.dir/DependInfo.cmake "--color=$(COLOR)" uninstall
 .PHONY : includes/glfw-3.4/CMakeFiles/uninstall.dir/depend
 

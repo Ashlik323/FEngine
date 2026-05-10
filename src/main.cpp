@@ -5,6 +5,11 @@
 #include <glm/glm.hpp>
 #include <thread>
 
+#include <string>
+#include <utils/fileload.h>
+
+#include <chrono>
+
 int main(void)
 {
     GLFWwindow* window;
@@ -25,17 +30,17 @@ int main(void)
     glfwMakeContextCurrent(window);
     gladLoadGL();
 
-    world_load("./game/map.fmap");
+    std::this_thread::sleep_for(std::chrono::seconds(2));
+    world_load("./map.fmap");
 
-    render_Camera_change_transform(glm::mat4(1.0f, 0.0f, 0.0f, 0.0f,
-                                             0.0f, 1.0f, 0.0f, 0.0f,
-                                             0.0f, 0.0f, 1.0f, 10.0f,
-                                             0.0f, 0.0f, 0.0f, 1.0f));
+    render_Camera_change_transform(glm::translate(glm::mat4(1.0f), glm::vec3(0.0f,0.0f, -30.0f)));
 
-    render_Camera_change_perspective(glm::perspective(glm::radians(45.0f), 1.0f, 0.1f, 100.0f));
+    render_Camera_change_perspective(glm::perspective(glm::radians(45.0f), 1.0f, 0.1f, 1000.0f));
 
     std::thread worldthread(world_init);
     worldthread.detach();
+
+    //std::this_thread::sleep_for(std::chrono::seconds(2));
 
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window))
@@ -45,6 +50,7 @@ int main(void)
         /* Poll for and process events */
         glfwPollEvents();
     }
+    render_deinit();
 
     glfwTerminate();
     return 0;

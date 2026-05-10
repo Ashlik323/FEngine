@@ -1,9 +1,9 @@
 
-if (NOT EXISTS "/home/alexz/FlagmanEngineV1_1/build/includes/glfw-3.4/install_manifest.txt")
-    message(FATAL_ERROR "Cannot find install manifest: \"/home/alexz/FlagmanEngineV1_1/build/includes/glfw-3.4/install_manifest.txt\"")
+if (NOT EXISTS "/home/alexz/FEngine/build/includes/glfw-3.4/install_manifest.txt")
+    message(FATAL_ERROR "Cannot find install manifest: \"/home/alexz/FEngine/build/includes/glfw-3.4/install_manifest.txt\"")
 endif()
 
-file(READ "/home/alexz/FlagmanEngineV1_1/build/includes/glfw-3.4/install_manifest.txt" files)
+file(READ "/home/alexz/FEngine/build/includes/glfw-3.4/install_manifest.txt" files)
 string(REGEX REPLACE "\n" ";" files "${files}")
 
 foreach (file ${files})

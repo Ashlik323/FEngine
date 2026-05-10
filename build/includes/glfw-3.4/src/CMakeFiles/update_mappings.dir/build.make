@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/alexz/FlagmanEngineV1_1
+CMAKE_SOURCE_DIR = /home/alexz/FEngine
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/alexz/FlagmanEngineV1_1/build
+CMAKE_BINARY_DIR = /home/alexz/FEngine/build
 
 # Utility rule file for update_mappings.
 
@@ -67,8 +67,8 @@ include includes/glfw-3.4/src/CMakeFiles/update_mappings.dir/compiler_depend.mak
 include includes/glfw-3.4/src/CMakeFiles/update_mappings.dir/progress.make
 
 includes/glfw-3.4/src/CMakeFiles/update_mappings:
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/alexz/FlagmanEngineV1_1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Updating gamepad mappings from upstream repository"
-	cd /home/alexz/FlagmanEngineV1_1/includes/glfw-3.4/src && /usr/bin/cmake -P /home/alexz/FlagmanEngineV1_1/includes/glfw-3.4/CMake/GenerateMappings.cmake mappings.h.in mappings.h
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/alexz/FEngine/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Updating gamepad mappings from upstream repository"
+	cd /home/alexz/FEngine/includes/glfw-3.4/src && /usr/bin/cmake -P /home/alexz/FEngine/includes/glfw-3.4/CMake/GenerateMappings.cmake mappings.h.in mappings.h
 
 includes/glfw-3.4/src/CMakeFiles/update_mappings.dir/codegen:
 .PHONY : includes/glfw-3.4/src/CMakeFiles/update_mappings.dir/codegen
@@ -82,10 +82,10 @@ includes/glfw-3.4/src/CMakeFiles/update_mappings.dir/build: update_mappings
 .PHONY : includes/glfw-3.4/src/CMakeFiles/update_mappings.dir/build
 
 includes/glfw-3.4/src/CMakeFiles/update_mappings.dir/clean:
-	cd /home/alexz/FlagmanEngineV1_1/build/includes/glfw-3.4/src && $(CMAKE_COMMAND) -P CMakeFiles/update_mappings.dir/cmake_clean.cmake
+	cd /home/alexz/FEngine/build/includes/glfw-3.4/src && $(CMAKE_COMMAND) -P CMakeFiles/update_mappings.dir/cmake_clean.cmake
 .PHONY : includes/glfw-3.4/src/CMakeFiles/update_mappings.dir/clean
 
 includes/glfw-3.4/src/CMakeFiles/update_mappings.dir/depend:
-	cd /home/alexz/FlagmanEngineV1_1/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/alexz/FlagmanEngineV1_1 /home/alexz/FlagmanEngineV1_1/includes/glfw-3.4/src /home/alexz/FlagmanEngineV1_1/build /home/alexz/FlagmanEngineV1_1/build/includes/glfw-3.4/src /home/alexz/FlagmanEngineV1_1/build/includes/glfw-3.4/src/CMakeFiles/update_mappings.dir/DependInfo.cmake "--color=$(COLOR)" update_mappings
+	cd /home/alexz/FEngine/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/alexz/FEngine /home/alexz/FEngine/includes/glfw-3.4/src /home/alexz/FEngine/build /home/alexz/FEngine/build/includes/glfw-3.4/src /home/alexz/FEngine/build/includes/glfw-3.4/src/CMakeFiles/update_mappings.dir/DependInfo.cmake "--color=$(COLOR)" update_mappings
 .PHONY : includes/glfw-3.4/src/CMakeFiles/update_mappings.dir/depend
 

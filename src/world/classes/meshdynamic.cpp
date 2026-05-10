@@ -23,18 +23,38 @@ void dynamicmesh_setupobj_json(nlohmann::json jdata, nlohmann::json overridejdat
 
     nlohmann::json jmatdata = nlohmann::json::parse(matfile);
 
+    matfile.close();
+
+    std::cout << "t1" << std::endl;
+
     unsigned int w, h;
+
+    std::cout << "t2" << std::endl;
 
     std::vector<unsigned char> imgdata = loadimage(jmatdata["textures"][0], &w, &h);
 
+    std::cout << "t3" << std::endl;
+
     std::string vScode, fScode;
+
+    std::cout << "t4" << std::endl;
 
     loadfilecontents(jmatdata["vertexShader"], &vScode);
 
+    std::cout << "t5" << std::endl;
+
     loadfilecontents(jmatdata["fragmentShader"], &fScode);
 
+    std::cout << "t6" << std::endl;
+
     ImageRenderInfo& tex = loadtexture(w, h, imgdata.data(), 0);
+
+    std::cout << "t7" << std::endl;
+
     ShaderRenderInfo& shaderprog = loadshaders(vScode, fScode);
+
+    std::cout << "t8" << std::endl;
+
     DynMeshRenderInfo& mesh = render_DynamicMesh_add(mdata.data, mdata.inddata);
 
     render_DynamicMesh_add_imagebind(mesh, tex);

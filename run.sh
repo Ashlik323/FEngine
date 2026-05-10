@@ -1,3 +1,3 @@
 #! /bin/sh
 
-cp ./build/FlagmanEngine ./game/FlagmanEngine ; ./game/FlagmanEngine
+cp ./build/FlagmanEngine ./game/FlagmanEngine ; cd ./game ; ./FlagmanEngine

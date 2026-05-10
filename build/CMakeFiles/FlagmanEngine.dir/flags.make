@@ -5,13 +5,13 @@
 # compile CXX with /usr/bin/c++
 C_DEFINES = 
 
-C_INCLUDES = -I/home/alexz/FlagmanEngineV1_1/src -I/home/alexz/FlagmanEngineV1_1/includes -I/home/alexz/FlagmanEngineV1_1/includes/glfw-3.4/include
+C_INCLUDES = -I/home/alexz/FEngine/src -I/home/alexz/FEngine/includes -I/home/alexz/FEngine/includes/glfw-3.4/include
 
 C_FLAGS = 
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/alexz/FlagmanEngineV1_1/src -I/home/alexz/FlagmanEngineV1_1/includes -I/home/alexz/FlagmanEngineV1_1/includes/glfw-3.4/include
+CXX_INCLUDES = -I/home/alexz/FEngine/src -I/home/alexz/FEngine/includes -I/home/alexz/FEngine/includes/glfw-3.4/include
 
 CXX_FLAGS = 
 
