@@ -60,27 +60,63 @@ void dynamicmesh_setupobj_json(nlohmann::json jdata, nlohmann::json overridejdat
     render_DynamicMesh_add_imagebind(mesh, tex);
     render_DynamicMesh_change_program(mesh, shaderprog);
 
-    if (overridejdata["transform"].is_null()){
-        render_DynamicMesh_change_transform(mesh, glm::mat4(jdata["transform"][0].get<float>(),
-                                                            jdata["transform"][1].get<float>(),
-                                                            jdata["transform"][2].get<float>(),
-                                                            jdata["transform"][3].get<float>(),
-                                                            jdata["transform"][4].get<float>(),
-                                                            jdata["transform"][5].get<float>(),
-                                                            jdata["transform"][6].get<float>(),
-                                                            jdata["transform"][7].get<float>(),
-                                                            jdata["transform"][8].get<float>(),
-                                                            jdata["transform"][9].get<float>(),
-                                                            jdata["transform"][10].get<float>(),
-                                                            jdata["transform"][11].get<float>(),
-                                                            jdata["transform"][12].get<float>(),
-                                                            jdata["transform"][13].get<float>(),
-                                                            jdata["transform"][14].get<float>(),
-                                                            jdata["transform"][15].get<float>()));
+    if (overridejdata["v3euler"].is_null()){
+        if(jdata["v3euler"].is_null()){
+            if (overridejdata["transform"].is_null()){
+                render_DynamicMesh_change_transform(mesh, glm::mat4(jdata["transform"][0].get<float>(),
+                                                                    jdata["transform"][1].get<float>(),
+                                                                    jdata["transform"][2].get<float>(),
+                                                                    jdata["transform"][3].get<float>(),
+                                                                    jdata["transform"][4].get<float>(),
+                                                                    jdata["transform"][5].get<float>(),
+                                                                    jdata["transform"][6].get<float>(),
+                                                                    jdata["transform"][7].get<float>(),
+                                                                    jdata["transform"][8].get<float>(),
+                                                                    jdata["transform"][9].get<float>(),
+                                                                    jdata["transform"][10].get<float>(),
+                                                                    jdata["transform"][11].get<float>(),
+                                                                    jdata["transform"][12].get<float>(),
+                                                                    jdata["transform"][13].get<float>(),
+                                                                    jdata["transform"][14].get<float>(),
+                                                                    jdata["transform"][15].get<float>()));
+            }
+            else{
+                render_DynamicMesh_change_transform(mesh, glm::mat4(overridejdata["transform"][0].get<float>(),
+                                                                    overridejdata["transform"][1].get<float>(),
+                                                                    overridejdata["transform"][2].get<float>(),
+                                                                    overridejdata["transform"][3].get<float>(),
+                                                                    overridejdata["transform"][4].get<float>(),
+                                                                    overridejdata["transform"][5].get<float>(),
+                                                                    overridejdata["transform"][6].get<float>(),
+                                                                    overridejdata["transform"][7].get<float>(),
+                                                                    overridejdata["transform"][8].get<float>(),
+                                                                    overridejdata["transform"][9].get<float>(),
+                                                                    overridejdata["transform"][10].get<float>(),
+                                                                    overridejdata["transform"][11].get<float>(),
+                                                                    overridejdata["transform"][12].get<float>(),
+                                                                    overridejdata["transform"][13].get<float>(),
+                                                                    overridejdata["transform"][14].get<float>(),
+                                                                    overridejdata["transform"][15].get<float>()));
+            }
+        }
+        else{
+            render_DynamicMesh_change_transform(mesh, glm::translate(glm::eulerAngleYXZ(jdata["v3euler"][3].get<float>(),
+                                                                                        jdata["v3euler"][4].get<float>(),
+                                                                                        jdata["v3euler"][5].get<float>()),
+                                                                     glm::vec3(jdata["v3euler"][0].get<float>(),
+                                                                               jdata["v3euler"][1].get<float>(),
+                                                                               jdata["v3euler"][2].get<float>())));
+        }
     }
     else{
-        render_DynamicMesh_change_transform(mesh, glm::mat4(overridejdata["transform"]));
+        render_DynamicMesh_change_transform(mesh, glm::translate(glm::eulerAngleYXZ(overridejdata["v3euler"][3].get<float>(),
+                                                                                    overridejdata["v3euler"][4].get<float>(),
+                                                                                    overridejdata["v3euler"][5].get<float>()),
+                                                                 glm::vec3(overridejdata["v3euler"][0].get<float>(),
+                                                                           overridejdata["v3euler"][1].get<float>(),
+                                                                           overridejdata["v3euler"][2].get<float>())));
     }
+
 
     render_DynamicMesh_change_query(mesh, 1);
 }

@@ -183,7 +183,7 @@ void render_tick(GLFWwindow** window){
 
         GLuint TUPos = glGetUniformLocation(Curmesh.ShaderP->progid, "transform");
 
-        glm::mat4x4 mc = camperspective*camtransform;
+        glm::mat4x4 mc = camperspective*(Curmesh.mtransform*camtransform);
 
         //mat4x4 mc = m4x4multiplybymat(camtransform, Curmesh.mtransform);
         //mc = m4x4transpose(mc);

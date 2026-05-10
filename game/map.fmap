@@ -16,6 +16,18 @@
             "overridedata": {
 
             }
+        },
+        {
+            "classid": 1,
+            "datatype": 0,
+            "data": {
+                "meshfile": "./models/Cylinder.fmodel",
+                "materialfile": "./materials/material.fmat",
+                "v3euler": [30, 20, 40, 56, 23, 12]
+            },
+            "overridedata": {
+
+            }
         }
     ]
 }

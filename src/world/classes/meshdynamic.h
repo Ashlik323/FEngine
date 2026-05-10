@@ -6,6 +6,7 @@
 #include <utils/fileload.h>
 #include <render/rendergl.h>
 #include <glm/glm.hpp>
+#include <glm/ext.hpp>
 #include <iostream>
 
 void dynamicmesh_setupobj_json(nlohmann::json jdata, nlohmann::json overridejdata);
