@@ -13,12 +13,24 @@ glm::mat4x4 camperspective;
 
 std::vector<DynMeshRenderInfo> DynRQueue;
 
+std::vector<ShaderRenderInfo> ShaderQueue;
+
 std::vector<GLuint> vertexbuffers;
 
 std::vector<ImageRenderInfo> images;
 std::vector<ShaderRenderInfo> shaders;
 
 unsigned int IRI = 0, SRI = 0, MRI = 0;
+
+ShaderRenderInfo* render_Shader_findbyid(unsigned int fid){
+    for (int i = 0; i < ShaderQueue.size(); i++){
+
+        if (ShaderQueue.at(i).id == fid){
+            return &ShaderQueue.at(i);
+        }
+    }
+    return NULL;
+}
 
 ImageRenderInfo& loadtexture(unsigned int width, unsigned int height, unsigned char* contents, unsigned int type){
     ImageRenderInfo r;
@@ -80,8 +92,8 @@ ShaderRenderInfo& loadshaders(std::string vertexShaderCode, std::string fragment
     RI.id = ++SRI;
     RI.progid = SID;
 
-    shaders.push_back(RI);
-    return shaders.at(shaders.size()-1);
+    ShaderQueue.push_back(RI);
+    return ShaderQueue.at(ShaderQueue.size()-1);
 }
 
 void render_Camera_change_transform(glm::mat4x4 ctransform){
@@ -147,6 +159,10 @@ DynMeshRenderInfo& render_DynamicMesh_add(std::vector<vertexdata> data, std::vec
     return DynRQueue.at(DynRQueue.size()-1);
 }
 
+void render_Shader_add_mesh(DynMeshRenderInfo& mesh, ShaderRenderInfo& SP){
+    SP.MeshesQueue.push_back(&mesh);
+}
+
 void render_DynamicMesh_change_transform(DynMeshRenderInfo& mesh, glm::mat4x4 meshtransform){
     mesh.mtransform = meshtransform; //possible pointer bug here
 };
@@ -159,43 +175,31 @@ void render_DynamicMesh_add_imagebind(DynMeshRenderInfo& mesh, ImageRenderInfo& 
     mesh.texturesid.push_back(&image);
 }
 
-void render_DynamicMesh_change_program(DynMeshRenderInfo& mesh, ShaderRenderInfo& SP){
-    mesh.ShaderP = &SP;
-}
-
 void render_tick(GLFWwindow** window){
     /* Render here */
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     //std::cout<<"cleared"<<std::endl;
-    for (int dmc = 0; dmc < DynRQueue.size(); dmc++){
-        DynMeshRenderInfo& Curmesh = DynRQueue.at(dmc);//possible optimization caveat due to use of references
-        if (Curmesh.enablequery==1){
-        for (int t=0; t<Curmesh.texturesid.size(); t++){
-            glActiveTexture(GL_TEXTURE0 + t);
-            ImageRenderInfo* tex = Curmesh.texturesid.at(t);
-            glBindTexture(GL_TEXTURE_2D, tex->imgid);
-        }
-        glActiveTexture(GL_TEXTURE0);
-        glUseProgram(Curmesh.ShaderP->progid);
-        glBindVertexArray(Curmesh.vao);
+    for (int sc = 0; sc < ShaderQueue.size(); sc++){
 
-        std::cout << Curmesh.vao << std::endl;
+        glUseProgram(ShaderQueue.at(sc).progid);
+        for(int meshc = 0; meshc < ShaderQueue.at(sc).MeshesQueue.size(); meshc++){
+            for (int t=0; t<ShaderQueue.at(sc).MeshesQueue.at(meshc)->texturesid.size(); t++){
+                glActiveTexture(GL_TEXTURE0 + t);
+                glBindTexture(GL_TEXTURE_2D, ShaderQueue.at(sc).MeshesQueue.at(meshc)->texturesid.at(t)->imgid);
+            }
+            glActiveTexture(GL_TEXTURE0);
 
-        GLuint TUPos = glGetUniformLocation(Curmesh.ShaderP->progid, "transform");
+            glBindVertexArray(ShaderQueue.at(sc).MeshesQueue.at(meshc)->vao);
 
-        glm::mat4x4 mc = camperspective*(Curmesh.mtransform*camtransform);
+            glm::mat4x4 mc = camperspective*camtransform*ShaderQueue.at(sc).MeshesQueue.at(meshc)->mtransform;
+            GLuint TUPos = glGetUniformLocation(ShaderQueue.at(sc).progid, "transform");
+            glUniformMatrix4fv(TUPos, 1, GL_FALSE, glm::value_ptr(mc));
 
-        //mat4x4 mc = m4x4multiplybymat(camtransform, Curmesh.mtransform);
-        //mc = m4x4transpose(mc);
-        glUniformMatrix4fv(TUPos, 1, GL_FALSE, glm::value_ptr(mc));//pointer bug possible here
+            //glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ShaderQueue.at(sc).MeshesQueue.at(meshc)->ebo);
 
-        //for (int i = 0; i<16; i++)
-        //    std::cout << mc.e[i] << std::endl;
+            glDrawElements(GL_TRIANGLES, ShaderQueue.at(sc).MeshesQueue.at(meshc)->Icount, GL_UNSIGNED_INT, NULL);
 
-        glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, Curmesh.ebo);
-        glDrawElements(GL_TRIANGLES, Curmesh.Icount, GL_UNSIGNED_INT, NULL);
-        std::cout << "Draw finishedd" << std::endl;
-        //another buffer should be binded so I think I should not unbind them as of now
+            std::cout << "finished drawing" << std::endl;
         }
     }
         /* Swap front and back buffers */

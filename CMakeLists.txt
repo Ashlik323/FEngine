@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.24)
 
 include(CMakePrintHelpers)
 
-add_subdirectory("includes/glfw-3.4")
+add_subdirectory("includes/glfw")
 
 project(FlagmanEngine)
 

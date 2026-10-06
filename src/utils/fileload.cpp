@@ -3,7 +3,7 @@
 
 void loadmesh(std::string modelfile, returndata* data, int primpos){//ig the data info gets destroyed here, so not using double pointers for now
     std::cout << modelfile;
-    std::ifstream file(modelfile);
+    std::ifstream file(modelfile, ::std::ios::binary);
     file.seekg (0, file.end);
     int length = file.tellg();
     file.seekg (0, file.beg);

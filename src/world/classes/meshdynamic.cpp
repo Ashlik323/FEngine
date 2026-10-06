@@ -13,10 +13,12 @@ void dynamicmesh_setupobj_json(nlohmann::json jdata, nlohmann::json overridejdat
     std::ifstream matfile;
 
     if (overridejdata["materialfile"].is_null()){
-        matfile.open(jdata["materialfile"]);
+        std::string fl = jdata["materialfile"];
+        matfile.open(fl);
     }
     else{
-        matfile.open(overridejdata["materialfile"]);
+        std::string fl = overridejdata["materialfile"];
+        matfile.open(fl);
     }
 
     std::cout << matfile.is_open() << std::endl;
@@ -25,40 +27,43 @@ void dynamicmesh_setupobj_json(nlohmann::json jdata, nlohmann::json overridejdat
 
     matfile.close();
 
-    std::cout << "t1" << std::endl;
-
     unsigned int w, h;
-
-    std::cout << "t2" << std::endl;
 
     std::vector<unsigned char> imgdata = loadimage(jmatdata["textures"][0], &w, &h);
 
-    std::cout << "t3" << std::endl;
+    std::cout << "width, height: " << w << " " << h << std::endl;
+    for (int i = 0; i<imgdata.size(); i++){
+        //std::cout << imgdata.at(i);
+        if (*(reinterpret_cast<int*>(&imgdata.at(i))) == 0){
+           // std::cout << "zero";
+        }
 
-    std::string vScode, fScode;
+    }
+    std::cout << imgdata.size();
 
-    std::cout << "t4" << std::endl;
-
-    loadfilecontents(jmatdata["vertexShader"], &vScode);
-
-    std::cout << "t5" << std::endl;
-
-    loadfilecontents(jmatdata["fragmentShader"], &fScode);
-
-    std::cout << "t6" << std::endl;
+    ShaderRenderInfo* shaderp = render_Shader_findbyid(jmatdata["programid"].get<unsigned int>());
 
     ImageRenderInfo& tex = loadtexture(w, h, imgdata.data(), 0);
 
-    std::cout << "t7" << std::endl;
-
-    ShaderRenderInfo& shaderprog = loadshaders(vScode, fScode);
-
-    std::cout << "t8" << std::endl;
-
     DynMeshRenderInfo& mesh = render_DynamicMesh_add(mdata.data, mdata.inddata);
 
+    if (shaderp == NULL){
+        std::cout << "Shader not found" << jmatdata["programid"].get<unsigned int>() << std::endl;
+        std::string vScode, fScode;
+        loadfilecontents(jmatdata["vertexShader"], &vScode);
+        loadfilecontents(jmatdata["fragmentShader"], &fScode);
+        vScode.pop_back();
+        fScode.pop_back();
+        ShaderRenderInfo& shaderprog = loadshaders(vScode, fScode);
+        shaderprog.id = jmatdata["programid"].get<unsigned int>();
+        render_Shader_add_mesh(mesh, shaderprog);
+    }
+    else{
+        std::cout << "Shader found" << jmatdata["programid"].get<unsigned int>() << std::endl;
+        render_Shader_add_mesh(mesh, *shaderp);
+    }
+
     render_DynamicMesh_add_imagebind(mesh, tex);
-    render_DynamicMesh_change_program(mesh, shaderprog);
 
     if (overridejdata["v3euler"].is_null()){
         if(jdata["v3euler"].is_null()){
@@ -109,6 +114,17 @@ void dynamicmesh_setupobj_json(nlohmann::json jdata, nlohmann::json overridejdat
         }
     }
     else{
+        std::cout << "ORIENTATION: "<< glm::to_string(glm::eulerAngleYXZ(overridejdata["v3euler"][3].get<float>(),
+                                                                        overridejdata["v3euler"][4].get<float>(),
+                                                                        overridejdata["v3euler"][5].get<float>())) << std::endl;
+
+        std::cout << "TRANSFORM: "<< glm::translate(glm::eulerAngleYXZ(overridejdata["v3euler"][3].get<float>(),
+                                                                        overridejdata["v3euler"][4].get<float>(),
+                                                                        overridejdata["v3euler"][5].get<float>()),
+                                                                 glm::vec3(overridejdata["v3euler"][0].get<float>(),
+                                                                           overridejdata["v3euler"][1].get<float>(),
+                                                                           overridejdata["v3euler"][2].get<float>())) << std::endl;
+
         render_DynamicMesh_change_transform(mesh, glm::translate(glm::eulerAngleYXZ(overridejdata["v3euler"][3].get<float>(),
                                                                                     overridejdata["v3euler"][4].get<float>(),
                                                                                     overridejdata["v3euler"][5].get<float>()),

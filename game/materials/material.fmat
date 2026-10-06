@@ -1,7 +1,8 @@
 {
-"textures":[
-"./textures/texture.ftex"
-],
-"vertexShader": "./shaders/vertex.txt",
-"fragmentShader": "./shaders/frag.txt"
+    "textures":[
+        "./textures/geeg.ftex"
+    ],
+    "programid": 1,
+    "vertexShader": "./shaders/vertex.txt",
+    "fragmentShader": "./shaders/frag.txt"
 }

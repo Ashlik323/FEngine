@@ -1,0 +1,13 @@
+cmake_minimum_required(VERSION 3.24)
+
+include(CMakePrintHelpers)
+
+project(FlagmanEngineContentTool)
+
+file(GLOB_RECURSE MY_SOURCES CONFIGURE_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp")
+
+cmake_print_variables(MY_SOURCES)
+
+add_executable(${PROJECT_NAME} "${MY_SOURCES}")
+
+target_include_directories(${PROJECT_NAME} PUBLIC "src/" PUBLIC "includes/")
