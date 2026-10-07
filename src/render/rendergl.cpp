@@ -174,14 +174,17 @@ void render_DynamicMesh_change_query(DynMeshRenderInfo& mesh, unsigned int statu
 void render_DynamicMesh_add_imagebind(DynMeshRenderInfo& mesh, ImageRenderInfo& image){
     mesh.texturesid.push_back(&image);
 }
+int l = 0;
 
 void render_tick(GLFWwindow** window){
     /* Render here */
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     //std::cout<<"cleared"<<std::endl;
     for (int sc = 0; sc < ShaderQueue.size(); sc++){
-
-        glUseProgram(ShaderQueue.at(sc).progid);
+        if (l==0){
+            l = 1;
+            glUseProgram(ShaderQueue.at(sc).progid);
+        }
         for(int meshc = 0; meshc < ShaderQueue.at(sc).MeshesQueue.size(); meshc++){
             for (int t=0; t<ShaderQueue.at(sc).MeshesQueue.at(meshc)->texturesid.size(); t++){
                 glActiveTexture(GL_TEXTURE0 + t);
@@ -195,7 +198,7 @@ void render_tick(GLFWwindow** window){
             GLuint TUPos = glGetUniformLocation(ShaderQueue.at(sc).progid, "transform");
             glUniformMatrix4fv(TUPos, 1, GL_FALSE, glm::value_ptr(mc));
 
-            //glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ShaderQueue.at(sc).MeshesQueue.at(meshc)->ebo);
+            glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ShaderQueue.at(sc).MeshesQueue.at(meshc)->ebo);
 
             glDrawElements(GL_TRIANGLES, ShaderQueue.at(sc).MeshesQueue.at(meshc)->Icount, GL_UNSIGNED_INT, NULL);
 

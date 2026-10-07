@@ -62,13 +62,15 @@ int main(void)
         //glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         //glfwSwapBuffers(window);
         render_tick(&window);
-        //std::this_thread::sleep_for(std::chrono::seconds(2));
+        std::this_thread::sleep_for(std::chrono::seconds(2));
 
         /* Poll for and process events */
         glfwPollEvents();
     }
     render_deinit();
 
+
+    std::this_thread::sleep_for(std::chrono::seconds(200));
     glfwTerminate();
     return 0;
 }
