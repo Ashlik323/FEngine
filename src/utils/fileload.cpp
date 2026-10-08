@@ -14,7 +14,7 @@ void loadmesh(std::string modelfile, returndata* data, int primpos){//ig the dat
     file.read(reinterpret_cast<char*>(&primammount), 4);
     file.seekg(length-4-((primammount-primpos)*4));
     file.read(reinterpret_cast<char*>(&offset), 4);
-    std::cout << offset;
+    std::cout << offset << std::endl;
     unsigned int vposSize;
     unsigned int vcoordSize;
     unsigned int indicesSize;
@@ -30,33 +30,42 @@ void loadmesh(std::string modelfile, returndata* data, int primpos){//ig the dat
     file.seekg(16+offset);//if something is wrong, try removing 1 from every seekg value please
 
     std::cout << vposSize << std::endl;
+    std::cout << vcoordSize << std::endl;
+    std::cout << indicesSize << std::endl;
+;
 
-    float Pos[vposSize/4];
-    file.read(reinterpret_cast<char*>(&Pos), vposSize);
+    std::vector<float> Pos;
+    Pos.resize(vposSize/4);
+    file.read(reinterpret_cast<char*>(Pos.data()), vposSize);
     file.seekg(16+offset+vposSize);
 
-    float Norm[vposSize/4];
-    file.read(reinterpret_cast<char*>(&Norm), vposSize);
+    std::vector<float> Norm;
+    Norm.resize(vposSize/4);
+    file.read(reinterpret_cast<char*>(Norm.data()), vposSize);
     file.seekg(16+offset+vposSize*2);
 
-    float Coord[vposSize/6];
-    file.read(reinterpret_cast<char*>(&Coord), vcoordSize);
+    std::vector<float> Coord;
+    Coord.resize(vposSize/6);
+    file.read(reinterpret_cast<char*>(Coord.data()), vcoordSize);
     file.seekg(16+offset+vposSize*2+vcoordSize);
-    std::cout<<indicesSize;
 
-    unsigned short indices[indicesSize/2];
-    file.read(reinterpret_cast<char*>(&indices), indicesSize);
+    std::vector<unsigned short> indices;
+    indices.resize(indicesSize/2);
+    file.read(reinterpret_cast<char*>(indices.data()), indicesSize);
 
-    unsigned int newindices[indicesSize/2];
+    std::vector<unsigned int> newindices;
+    newindices.resize(indicesSize/2);
     for(int i=0; i<indicesSize/2; i++){
-        newindices[i] = static_cast<unsigned int>(indices[i]);
+        newindices.at(i) = static_cast<unsigned int>(indices.at(i));
     }
-
     std::cout << std::endl;
     std::cout << sizeof(Norm) << std::endl;
 
-    vertexdata vdata[vposSize/12];
-    std::cout << sizeof(vdata) << std::endl;
+    std::vector<vertexdata> vdata;
+    //vdata.resize(vposSize/12);
+    std::cout << vdata.size() << std::endl;
+    std::cout << sizeof(vdata.data()) << std::endl;
+
     for(int i=0; i<vposSize/4; i=(i+3)){
         /*
         vdata[i] = Pos[i];
@@ -72,15 +81,17 @@ void loadmesh(std::string modelfile, returndata* data, int primpos){//ig the dat
         */
         //std::cout << sizeof(vdata)/32 << " " << vposSize/4 << std::endl;
         //std::cout << Pos[i] << " " << Pos[i+1] << " " << Pos[i+2] << " : "<< i << " " << i+1 << " " << i+2 << std::endl;
-        vdata[i/3].vertexpos = {Pos[i], Pos[i+1], Pos[i+2]};
-        vdata[i/3].normals = {Norm[i], Norm[i+1], Norm[i+2]};
+        //vdata.at(i/3).vertexpos = {Pos[i], Pos[i+1], Pos[i+2]};
+        //vdata.at(i/3).normals = {Norm[i], Norm[i+1], Norm[i+2]};
+        vdata.push_back({{Pos[i], Pos[i+1], Pos[i+2]}, {Norm[i], Norm[i+1], Norm[i+2]}});
         //vdata[i].texcoord = {Coord[i], Coord[i+1]};
     }
+    std::cout << vcoordSize << std::endl;
     for(int i=0; i<vcoordSize/4; i=(i+2)){
-        vdata[i/2].texcoord = {Coord[i], Coord[i+1]};
+        vdata.at(i/2).texcoord = {Coord[i], Coord[i+1]};
     }
 
-    returndata res = {std::vector<vertexdata>(vdata, vdata+sizeof(vdata)/sizeof(vertexdata)), std::vector<unsigned int>(newindices, newindices+sizeof(newindices)/4)};
+    returndata res = {vdata, newindices};
 
     *data = res;
 

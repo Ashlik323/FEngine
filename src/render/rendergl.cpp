@@ -172,6 +172,7 @@ void render_DynamicMesh_change_query(DynMeshRenderInfo& mesh, unsigned int statu
 }
 
 void render_DynamicMesh_add_imagebind(DynMeshRenderInfo& mesh, ImageRenderInfo& image){
+    std::cout << "changed" << std::endl;
     mesh.texturesid.push_back(&image);
 }
 int l = 0;
@@ -181,44 +182,62 @@ void render_tick(GLFWwindow** window){
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     //std::cout<<"cleared"<<std::endl;
     for (int sc = 0; sc < ShaderQueue.size(); sc++){
-        if (l==0){
-            l = 1;
-            glUseProgram(ShaderQueue.at(sc).progid);
-        }
+        glUseProgram(ShaderQueue.at(sc).progid);
+
         for(int meshc = 0; meshc < ShaderQueue.at(sc).MeshesQueue.size(); meshc++){
-            for (int t=0; t<ShaderQueue.at(sc).MeshesQueue.at(meshc)->texturesid.size(); t++){
-                glActiveTexture(GL_TEXTURE0 + t);
-                glBindTexture(GL_TEXTURE_2D, ShaderQueue.at(sc).MeshesQueue.at(meshc)->texturesid.at(t)->imgid);
+            if (ShaderQueue.at(sc).MeshesQueue.at(meshc) != nullptr){
+                for (int t=0; t<ShaderQueue.at(sc).MeshesQueue.at(meshc)->texturesid.size() && t<10; t++){
+                    //glActiveTexture(GL_TEXTURE0 + t);
+                    //glBindTexture(GL_TEXTURE_2D, ShaderQueue.at(sc).MeshesQueue.at(meshc)->texturesid.at(t)->imgid);
+                    std::cout << glGetError() << std::endl;
+                    std::cout << ShaderQueue.at(sc).MeshesQueue.at(meshc)->texturesid.size() << std::endl;
+                }
+                glActiveTexture(GL_TEXTURE0);
+                std::cout << glGetError() << std::endl;
+
+                glBindVertexArray(ShaderQueue.at(sc).MeshesQueue.at(meshc)->vao);
+                std::cout << glGetError() << std::endl;
+
+                glm::mat4x4 mc = camperspective*camtransform*ShaderQueue.at(sc).MeshesQueue.at(meshc)->mtransform;
+                GLuint TUPos = glGetUniformLocation(ShaderQueue.at(sc).progid, "transform");
+                glUniformMatrix4fv(TUPos, 1, GL_FALSE, glm::value_ptr(mc));
+                std::cout << glGetError() << std::endl;
+
+                glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ShaderQueue.at(sc).MeshesQueue.at(meshc)->ebo);
+                std::cout << glGetError() << std::endl;
+
+                glDrawElements(GL_TRIANGLES, ShaderQueue.at(sc).MeshesQueue.at(meshc)->Icount, GL_UNSIGNED_INT, NULL);
+                std::cout << glGetError() << std::endl;
+
+                std::cout << "finished drawing" << std::endl;
             }
-            glActiveTexture(GL_TEXTURE0);
-
-            glBindVertexArray(ShaderQueue.at(sc).MeshesQueue.at(meshc)->vao);
-
-            glm::mat4x4 mc = camperspective*camtransform*ShaderQueue.at(sc).MeshesQueue.at(meshc)->mtransform;
-            GLuint TUPos = glGetUniformLocation(ShaderQueue.at(sc).progid, "transform");
-            glUniformMatrix4fv(TUPos, 1, GL_FALSE, glm::value_ptr(mc));
-
-            glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ShaderQueue.at(sc).MeshesQueue.at(meshc)->ebo);
-
-            glDrawElements(GL_TRIANGLES, ShaderQueue.at(sc).MeshesQueue.at(meshc)->Icount, GL_UNSIGNED_INT, NULL);
-
-            std::cout << "finished drawing" << std::endl;
+            else{
+                std::cout << "ERR" << std::endl;
+            }
         }
     }
+    std::cout << "new frame" << std::endl;
         /* Swap front and back buffers */
     glfwSwapBuffers(*window);
     //std::cout<<"swapped"<<std::endl;
 };
 
 void render_deinit(){
-    for (int dmc = 0; dmc < DynRQueue.size(); dmc++){
-        DynMeshRenderInfo& Curmesh = DynRQueue.at(dmc);//possible optimization caveat due to use of references
-        for (int t=0; t<Curmesh.texturesid.size(); t++){
-            glDeleteTextures(1, &Curmesh.texturesid.at(t)->imgid);
+    for (int sc = 0; sc < ShaderQueue.size(); sc++){
+        glUseProgram(ShaderQueue.at(sc).progid);
+        std::cout << glGetError() << std::endl;
+        for(int meshc = 0; meshc < ShaderQueue.at(sc).MeshesQueue.size(); meshc++){
+
+            for (int t=0; t<ShaderQueue.at(sc).MeshesQueue.at(meshc)->texturesid.size(); t++){
+                glDeleteTextures(1, &ShaderQueue.at(sc).MeshesQueue.at(meshc)->texturesid.at(t)->imgid);;
+            }
+
+            glDeleteBuffers(1, &ShaderQueue.at(sc).MeshesQueue.at(meshc)->ebo);
+            glDeleteVertexArrays(1, &ShaderQueue.at(sc).MeshesQueue.at(meshc)->vao);
         }
-        glDeleteBuffers(1, &Curmesh.ebo);
-        glDeleteBuffers(1, &vertexbuffers.at(dmc));
-        glDeleteVertexArrays(1, &Curmesh.vao);
+    }
+    for (int sc = 0; sc < vertexbuffers.size(); sc++){
+        glDeleteBuffers(1, &vertexbuffers.at(sc));
     }
 };
 

@@ -5,7 +5,7 @@
             "datatype": 0,
             "overridestat": 1,
             "data": {
-                "meshfile": "./models/cylinder.fmodel",
+                "meshfile": "./models/Cylinder.fmodel",
                 "materialfile": "./materials/material.fmat",
                 "transform": [
                     1.0, 0.0, 0.0, 10.0,
@@ -23,7 +23,7 @@
             "datatype": 0,
             "overridestat": 1,
             "data": {
-                "meshfile": "./models/humanoid.fmodel",
+                "meshfile": "./models/Cylinder.fmodel",
                 "materialfile": "./materials/material.fmat",
                 "transform": [
                     1.0, 0.0, 0.0, 10.0,
@@ -33,7 +33,7 @@
                 ]
             },
             "overridedata": {
-                "v3euler": [10.0, 0.0, 0.0, 1.0, 2.0, 0.0]
+                "v3euler": [0.0, -10.0, 0.0, 1.0, 1.0, 0.0]
             }
         },
         {
@@ -41,7 +41,7 @@
             "datatype": 0,
             "overridestat": 1,
             "data": {
-                "meshfile": "./models/cylinder.fmodel",
+                "meshfile": "./models/Cylinder.fmodel",
                 "materialfile": "./materials/material.fmat",
                 "transform": [
                     1.0, 0.0, 0.0, 10.0,
@@ -51,7 +51,25 @@
                 ]
             },
             "overridedata": {
-                "v3euler": [-20.0, 10.0, -100.0, 0.0, 0.0, 0.0]
+                "v3euler": [10.0, 0.0, 0.0, 1.0, 1.0, 0.0]
+            }
+        },
+        {
+            "classid": 1,
+            "datatype": 0,
+            "overridestat": 1,
+            "data": {
+                "meshfile": "./models/Cylinder.fmodel",
+                "materialfile": "./materials/material.fmat",
+                "transform": [
+                    1.0, 0.0, 0.0, 0.0,
+                    0.0, 1.0, 0.0, 0.0,
+                    0.0, 0.0, 1.0, 0.0,
+                    0.0, 0.0, 0.0, 1.0
+                ]
+            },
+            "overridedata": {
+                "v3euler": [-10.0, 0.0, 0.0, 1.0, 1.0, 0.0]
             }
         }
     ]

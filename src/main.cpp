@@ -37,6 +37,7 @@ int main(void)
 
     /* Make the window's context current */
     glfwMakeContextCurrent(window);
+    //gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
     gladLoadGL();
 
     unsigned char sacrifice = 0;
@@ -70,7 +71,7 @@ int main(void)
     render_deinit();
 
 
-    std::this_thread::sleep_for(std::chrono::seconds(200));
+    //std::this_thread::sleep_for(std::chrono::seconds(200));
     glfwTerminate();
     return 0;
 }
